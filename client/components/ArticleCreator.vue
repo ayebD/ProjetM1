@@ -1,6 +1,6 @@
 <template>
   <div class="Container">
-    <div id="isConnected" v-if="users.userId !== -1">
+    <div id="isConnected" v-if="users.userId !== -1" >
       <form @submit.prevent="addArticle">
         <h2>Ajouter un nouvelle article</h2>
         <div class="ArticleTarget">
@@ -38,13 +38,13 @@
           title: "",
           text: "",
           image: "",
-          price: ""
+          creator: ""
         }
       }
     },
     async mounted() {
       this.$emit('check-perm');
-      this.newArticle.price = this.users.userName;
+      this.newArticle.creator = this.users.userName;
     },
     methods: {
       addArticle () {

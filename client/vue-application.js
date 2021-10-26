@@ -3,7 +3,7 @@ const Register = window.httpVueLoader('./components/Register.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
 const Landing = window.httpVueLoader('./components/Landing.vue')
 const ArticleView = window.httpVueLoader('./components/ArticleView.vue')
-const Articleprice = window.httpVueLoader('./components/Articleprice.vue')
+const ArticleCreator = window.httpVueLoader('./components/ArticleCreator.vue')
 const UpdateArticle = window.httpVueLoader('./components/UpdateArticle.vue')
 
 const routes = [
@@ -12,7 +12,7 @@ const routes = [
   { path: '/register', component: Register },
   { path: '/login', component: Login },
   { path: '/articleView', component: ArticleView },
-  { path: '/articleprice', component: Articleprice },
+  { path: '/articleCreator', component: ArticleCreator },
   { path: '/updateArticle', component: UpdateArticle }
 ]
 
@@ -35,7 +35,7 @@ var app = new Vue({
       title: "",
       text: "",
       image: "",
-      price: ""
+      creator: ""
     }
   },
   async mounted () {
@@ -117,10 +117,10 @@ var app = new Vue({
     },
     async editArticle(article) {
       console.log(article)
-      const res = await axios.put("/api/article", {id: article.id, title: article.title, text: article.text, image: article.image, price: article.price});
+      const res = await axios.put("/api/article", {id: article.id, title: article.title, text: article.text, image: article.image, creator: article.creator});
       let editingIndex = this.articles.findIndex(a => a.id === parseInt(article.id));
       this.articles[editingIndex].title = article.title;
-      this.articles[editingIndex].price = article.price;
+      this.articles[editingIndex].creator = article.creator;
       this.articles[editingIndex].image = article.image;
     }
   }
