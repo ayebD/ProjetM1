@@ -1,0 +1,57 @@
+<!doctype>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Mon magasin en ligne 100% bons plans</title>
+        <!-- Load Vue followed by Vue Router -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/http-vue-loader/src/httpVueLoader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/inscription.css">
+        <link rel="stylesheet" href="css/layout.css">
+        <link rel="stylesheet" href="/css/ArticleView.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="app">
+          <header>
+            <div class="LogoButton">
+              <div class="Logo">
+                <img src="https://d1yjjnpx0p53s8.cloudfront.net/octatech_logo.png">
+                <h1>TECH WORLD</h1>
+              </div>
+              <nav class="ConnectButton">
+                <button type="button" class="RouterC" v-if="users.userId !== -1" v-on:click="disconnect()">Se déconnecter</button>
+                <router-link to='/register' class="RouterC" v-if="users.userId === -1">Register</router-link>
+                <router-link to='/login' class="RouterC" v-if="users.userId === -1">Login</router-link>
+              </nav>
+            </div>
+            <nav class="page">
+              <router-link to="/" class="routerP">Home</router-link>
+              <router-link to='/home' class="routerP">Les Produits</router-link>
+              <router-link to='/articleprice' class="routerP" v-if="users.userId !== -1" v-if ="users.userPerm == 1">Ajouter un produit</router-link>
+            </nav>
+          </header>
+          <main>
+            <router-view
+              :articles="articles"
+              :users="users"
+              :selected="selected"
+              @add-article="addArticle"
+              @delete-article="deleteArticle"
+              @update-article="updateArticle"
+              @inscription="inscription"
+              @login="login"
+              @load-article-view="loadArticleView"
+              @check-perm="checkPerm"
+              @get-article-infos="getArticleInfos"
+              @edit-article="editArticle"
+            ></router-view>
+          </main>
+        </div>
+        <script src="/vue-application.js"></script>
+    </body>
+</html>
