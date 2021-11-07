@@ -48,3 +48,24 @@ Pour se faire, tapes les commandes suivantes:
 Voilà, maintenant t'es un pro de Git (ou presque) !
 
 LA BRANCHE A UTILISER SERA LA BRANCHE UPDATE
+
+table Postgre sql pour le fonctionnement du programme
+
+CREATE TABLE public.articles (
+    id integer NOT NULL,
+    text text,
+    title text,
+    image text,
+    creator text
+);
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    email text,
+    password text,
+    perm text DEFAULT 0 NOT NULL
+);
+
+Si le perm de la table users est à 1 il aura le droit de modifier les articiles.
+
+Il faudra bien setup le api.js pour pouvoir se connecté à la base de donées Postgre
