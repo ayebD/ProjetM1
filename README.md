@@ -1,5 +1,7 @@
 # projet
 
+LA BRANCHE A UTILISER SERA LA BRANCHE UPDATE
+
 ## Project setup
 ```
 npm install
@@ -44,3 +46,5 @@ Pour se faire, tapes les commandes suivantes:
 - `git push -u origin nomDeTaBranch`    **|** *envoie tes dossier sur ta branche nouvellement créée*
 
 Voilà, maintenant t'es un pro de Git (ou presque) !
+
+LA BRANCHE A UTILISER SERA LA BRANCHE UPDATE
